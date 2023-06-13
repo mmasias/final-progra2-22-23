@@ -1,0 +1,19 @@
+Iniciando carga de datos
+15 elements loaded.
+==========================================================
+=                      AHORCADO                          =
+==========================================================
+
+* Instrucciones *
+salir   -  Salir del juego
+Para jugar, ingrese una letra y presione enter.
+
+Palabra a adivinar con 15 letras:
+_______________
+Ingrese una letra:
+a
+
+
+Palabra a adivinar con 15 letras:
+A____A___A_____
+Ingrese una letra:
