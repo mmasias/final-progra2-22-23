@@ -4,9 +4,11 @@ import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidWordException;
 import com.progra.hangman.parsers.WordParser;
 import com.progra.utils.ReadFile;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserInterface {
     List<Word> words;
@@ -29,7 +31,7 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException{
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
@@ -57,7 +59,7 @@ public class UserInterface {
                 .collect(Collectors.toList());
     }
 
-    public void start(String filename) {
+    public void start(String filename) throws FileNotFoundException, InvalidWordException {
         /*
          Cargar las palabras desde el archivo
 
