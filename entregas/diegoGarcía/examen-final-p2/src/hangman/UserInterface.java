@@ -3,58 +3,62 @@ package hangman;
 import hangman.base.MediumWord;
 import hangman.base.Word;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-class UserInterface {
-    private List<Word> words;
+public class UserInterface {
+    List<Word> words;
     private int currentWordIndex;
     private boolean gameOver;
     private HangmanLogic logic;
-    private Scanner scanner;
 
     public UserInterface() {
         words = new ArrayList<>();
         currentWordIndex = 0;
         gameOver = false;
         logic = null;
-        scanner = new Scanner(System.in);
-    }
-
-    private void loadData() {
-        words.add(new MediumWord(1, "apple"));
-        words.add(new MediumWord(2, "banana"));
-        words.add(new MediumWord(3, "cherry"));
-    }
-
-    public void start() {
-        loadData();
-        currentWordIndex = randomIndex();
-        logic = new HangmanLogic(words.get(currentWordIndex));
-
-        while (!gameOver) {
-            printMenu();
-            String input = scanner.nextLine();
-            switch (input.toLowerCase()) {
-                case "1":
-                    play();
-                    break;
-                case "2":
-                    gameOver = true;
-                    System.out.println("Gracias por jugar. ¡Hasta luego!");
-                    break;
-                default:
-                    System.out.println("Opción inválida. Por favor, seleccione nuevamente.");
-                    break;
-            }
-        }
     }
 
     private int randomIndex() {
-        return new Random().nextInt(words.size());
+        return (int) (Math.random() * words.size());
     }
+
+    public void loadData(String filePath) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                int id = Integer.parseInt(parts[0]);
+                String word = parts[1];
+                Word newWord = new MediumWord(id, word);
+                words.add(newWord);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
+
+    public void start(String filePath) {
+        loadData(filePath);
+        if (words.isEmpty()) {
+            System.out.println("No se han cargado palabras.");
+            return;
+        }
+
+        currentWordIndex = randomIndex();
+        Word currentWord = words.get(currentWordIndex);
+        logic = new HangmanLogic(currentWord);
+
+        System.out.println("¡Bienvenido al juego del ahorcado!");
+        System.out.println("Palabra a adivinar: " + logic.hiddenWord());
+        play();
+    }
+
 
     private void printMenu() {
         System.out.println("Juego del Ahorcado");
@@ -70,6 +74,7 @@ class UserInterface {
 
         while (!logic.isGameOver()) {
             System.out.print("Ingresa una letra: ");
+            Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             logic.guessLetter(input);
             System.out.println("Palabra oculta: " + logic.hiddenWord());

@@ -46,10 +46,11 @@ class WordParser implements Parser {
         }
     }
 
-    private void sizeValidator(String word) throws InvalidWordException {
+    boolean sizeValidator(String word) throws InvalidWordException {
         if (word.isEmpty()) {
             throw new InvalidWordException("La palabra no puede estar vacía.");
         }
+        return false;
     }
     }
 
