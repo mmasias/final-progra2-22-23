@@ -32,10 +32,10 @@ public class Calc implements AdvancedArithmetic{
 
         String totalText = "";
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             if(n % i == 0)
             {
-                totalText = " " + totalText + ",";
+                totalText = totalText + i + ", ";
             }
         }
         return totalText;
