@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/entregas/entregas.iml" filepath="$PROJECT_DIR$/entregas/entregas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/esqueleto/esqueleto.iml" filepath="$PROJECT_DIR$/esqueleto/esqueleto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/final-progra2-22-23.iml" filepath="$PROJECT_DIR$/.idea/final-progra2-22-23.iml" />
+    </modules>
+  </component>
+</project>
