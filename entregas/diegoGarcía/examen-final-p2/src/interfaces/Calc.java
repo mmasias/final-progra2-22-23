@@ -17,15 +17,15 @@ public class Calc implements AdvancedArithmetic{
     }
 
     public String describeDivisors(int n) {
+        String result = "";
         if (n > 999) {
             throw new RuntimeException("n no puede ser mayor que 999");
         }
-        String result = "";
         for (int i = 1; i <= n; i++) {
             if (n % i == 0) {
-                result += i + ",";
+                result = result + i + ", "; //sum += i;
             }
         }
-        return result.substring(0, result.length() - 1);
+        return result;
     }
 }

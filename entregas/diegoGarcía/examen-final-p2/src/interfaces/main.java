@@ -5,13 +5,19 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
+        System.out.println("Ingrese un número entero positivo: ");
         int n = scanner.nextInt();
         Calc calc = new Calc();
-        System.out.println("Los divisores de "+ n +" son "+ calc.describeDivisors(n));
-        System.out.println("Su suma es: " + calc.divisorSum(n));
 
+        try {
+            int sum = calc.divisorSum(n);
+            System.out.println("La suma de los divisores de " + n + " es: " + sum);
 
+            String divisors = calc.describeDivisors(n);
+            System.out.println("Los divisores de " + n + " son: " + divisors);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
