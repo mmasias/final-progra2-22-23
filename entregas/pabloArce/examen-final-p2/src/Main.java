@@ -1,4 +1,5 @@
 import com.progra.hangman.UserInterface;
+import interfaces.Calc;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +13,12 @@ public class Main {
         UserInterface ui = new UserInterface();
         ui.start("data/word-list.txt");
         ui.play();
+
+        // Interfaces - ejercicio 2
+        Calc calc = new Calc();
+        System.out.println(calc.divisorSum(6));
+        // System.out.println(calc.divisorSum(1000)); throws error
+        System.out.println(calc.describeDivisors(6));
+        // System.out.println(calc.describeDivisors(1000)); throws error
     }
 }
