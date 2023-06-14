@@ -4,7 +4,7 @@ import com.progra.hangman.base.Word;
 
 public class HangmanLogic {
 
-    private Word word;
+    private final Word word;
     private String guessedLetters;
     private int numberOfFaults;
 
@@ -35,6 +35,11 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+        if (this.word.getWord().contains(letter)) {
+            this.guessedLetters += letter;
+        } else {
+            this.numberOfFaults++;
+        }
 
     }
 
@@ -44,7 +49,7 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
-        return false;
+        return this.numberOfFaults > this.word.getMaxTries();
     }
 
     public boolean isWon() {
@@ -52,6 +57,7 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+        return this.word.getWord().length() == this.guessedLetters.length();
     }
 
     public String getHangman() {
@@ -92,20 +98,23 @@ public class HangmanLogic {
     }
 
     public String hiddenWord() {
-
+        String hiddenWord = "";
         // programa aquí la funcionalidad para construir la palabra oculta
         // crea la palabra oculta iterando a través de this.word letra por letra
         // si la letra en cuestión, de this.word, está dentro de this.guessedLetters, ponla en la palabra oculta
         // si la letra en cuestión, de this.word, no está entre las letras adivinadas, reemplácela con _ en la palabra oculta
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
-
-
-
-
-        // return the hidden word at the end
-
-        return "";
+for (int i = 0; i < this.word.getWord().length(); i++) {
+    if (this.word.getWord().charAt(i) == this.guessedLetters.charAt(i)) {
+        hiddenWord += this.word.getWord().charAt(i);
+        return this.word.getWord().charAt(i) + "";
+    } else {
+        hiddenWord += "_";
+        return "_";
+    }
+}
+        return hiddenWord;
     }
 
 }

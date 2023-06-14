@@ -9,7 +9,7 @@ public class WordParser implements Parser {
     final int ELEMENT_COUNT = 3; // Número de elementos que debe contener la cadena de texto al hacer split
 
     public WordParser() {
-        // Regex por defecto, separa por comas "," la cadena de texto que se le pasa al método parse
+        // Regex por defecto, separa por comas"," la cadena de texto que se le pasa al método parse
         this.regex = ",";
     }
 
@@ -29,7 +29,6 @@ public class WordParser implements Parser {
         * tipo: es el tipo de palabra que es: LARGA, MEDIA o CORTA
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
-
     }
 
     /*
