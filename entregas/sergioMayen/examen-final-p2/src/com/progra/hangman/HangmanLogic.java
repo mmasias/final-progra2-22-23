@@ -2,6 +2,8 @@ package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
 
+import java.util.Scanner;
+
 public class HangmanLogic {
 
     private Word word;
@@ -54,13 +56,25 @@ public class HangmanLogic {
         return false;
     }
 
-    public boolean isWon() {
+    public boolean isWon(char[] letrasAdivinadas) {
         /* programa aquí la funcionalidad para comprobar si se gana el juego
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
 
         try{
+            if (isWon(letrasAdivinadas)) {
+                System.out.println("\n¡Felicidades! Adivinaste la palabra '");
+            } else {
+                System.out.println("\nLo siento, no adivinaste la palabra. La palabra correcta era. '");
+            }
+
+            for (char letra : letrasAdivinadas) {
+                if (letra == '_') {
+                    return false;
+                }
+            }
+            return true;
 
         }catch (Exception e) {
             System.out.println(e);
@@ -107,19 +121,50 @@ public class HangmanLogic {
 
     public String hiddenWord() {
 
-        // programa aquí la funcionalidad para construir la palabra oculta
-        // crea la palabra oculta iterando a través de this.word letra por letra
-        // si la letra en cuestión, de this.word, está dentro de this.guessedLetters, ponla en la palabra oculta
-        // si la letra en cuestión, de this.word, no está entre las letras adivinadas, reemplácela con _ en la palabra oculta
-        //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
-        //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Letra: ");
+        String palabra = scanner.nextLine();
 
+        char[] letrasAdivinadas = new char[palabra.length()];
+        for (int i = 0; i < letrasAdivinadas.length; i++) {
+            letrasAdivinadas[i] = '_';
+        }
 
+        boolean palabraAdivinada = false;
+        int intentos = 0;
 
-        // return the hidden word at the end
+        while (!palabraAdivinada) {
+            System.out.println("\nPalabra adivinada: " + String.valueOf(letrasAdivinadas));
+            System.out.print("Ingresa una letra: ");
+            char input = scanner.nextLine().charAt(0);
 
-        return "";
+            boolean letraAdivinada = false;
+
+            for (int i = 0; i < palabra.length(); i++) {
+                if (palabra.charAt(i) == input) {
+                    letrasAdivinadas[i] = input;
+                    letraAdivinada = true;
+                }
+            }
+
+            if (letraAdivinada) {
+                System.out.println("¡Correcto! La letra '" + input + "' está en la palabra.");
+            } else {
+                System.out.println("Incorrecto. La letra '" + input + "' no está en la palabra.");
+                intentos++;
+            }
+
+            if (String.valueOf(letrasAdivinadas).equals(palabra)) {
+                palabraAdivinada = true;
+            }
+        }
+
+        System.out.println("\n¡Felicidades! Adivinaste la palabra '" + palabra + "' en " + intentos + " intentos.");
+
+        scanner.close();
+
+        return letrasAdivinadas;
     }
 
 }
