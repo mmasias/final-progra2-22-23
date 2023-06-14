@@ -2,7 +2,7 @@ package com.progra.hangman.exceptions;
 
 public class InvalidWordException extends Exception{
 
-    InvalidWordException(String message){
+    public InvalidWordException(String message){
         super(message);
     }
 
