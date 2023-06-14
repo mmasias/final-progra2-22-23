@@ -2,7 +2,7 @@ package com.progra.test;
 
 import com.progra.hangman.base.MediumWord;
 import com.progra.hangman.base.Word;
-import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.exception.InvalidWordException;
 import com.progra.hangman.parsers.WordParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

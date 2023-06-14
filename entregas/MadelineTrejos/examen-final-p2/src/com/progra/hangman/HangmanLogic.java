@@ -35,7 +35,15 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+        letter = letter.toUpperCase();
+        if(!guessedLetters.contains(letter)){
+
+            guessedLetters = guessedLetters + letter;
+            if(!word.getWord().contains(letter)) numberOfFaults++;
+        }
     }
+
+
 
     public boolean isGameOver() {
 
@@ -43,14 +51,18 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
+        if(numberOfFaults >= word.getMaxTries()) return true;
         return false;
     }
+
 
     public boolean isWon() {
         /* programa aquí la funcionalidad para comprobar si se gana el juego
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+        if(this.word.getWord().equals(hiddenWord())) return true;
+        else return false;
     }
 
     public String getHangman() {
@@ -98,13 +110,18 @@ public class HangmanLogic {
         // si la letra en cuestión, de this.word, no está entre las letras adivinadas, reemplácela con _ en la palabra oculta
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
+        char[] hiddenWord = new char[word.getWord().length()];
 
-
-
-
+        for(int i = 0; i < word.getWord().length(); i++){
+            for(int k = 0; k < guessedLetters.length(); k++){
+                if( word.getWord().charAt(i) == guessedLetters.charAt(k)){
+                    hiddenWord[i] = guessedLetters.charAt(k);
+                }
+            }
+        }
         // return the hidden word at the end
 
-        return "";
+        return String.valueOf(hiddenWord);
     }
 
 }
