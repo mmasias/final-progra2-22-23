@@ -23,6 +23,7 @@ class WordParserTest {
             throw new RuntimeException(e);
         }
         assertEquals("abdomen", word.getWord());
+        System.out.println(tokens);
     }
 
     @Test

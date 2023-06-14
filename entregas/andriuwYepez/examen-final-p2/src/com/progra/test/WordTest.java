@@ -1,10 +1,12 @@
 package src.com.progra.test;
 
-import src.progra.hangman.base.MediumWord;
-import src.progra.hangman.base.ShortWord;
-import src.progra.hangman.base.Word;
+import src.com.progra.hangman.base.MediumWord;
+import src.com.progra.hangman.base.ShortWord;
+import src.com.progra.hangman.base.Word;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertEquals;
 
 class WordTest {
 
@@ -13,6 +15,7 @@ class WordTest {
     void shortWordTest() {
         Word word = new ShortWord(1, "Hola");
         assertEquals("S", word.getLevel());
+        System.out.println("S");
     }
 
     @Test
@@ -20,5 +23,6 @@ class WordTest {
     void mediumWordTest() {
         Word word = new MediumWord(1, "Abdomen");
         assertEquals("M", word.getLevel());
+        System.out.println("M");
     }
 }

@@ -3,9 +3,10 @@ package src.com.progra.test;
 import src.com.progra.hangman.HangmanLogic;
 import src.com.progra.hangman.base.ShortWord;
 import src.com.progra.hangman.base.Word;
-import src.com.progra.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertTrue;
 
 class HangmanLogicTest {
 
@@ -20,6 +21,7 @@ class HangmanLogicTest {
         logic.guessLetter("r");
 
         assertTrue(logic.isGameOver());
+        System.out.println("Se ha perdido");
     }
 
     @Test
@@ -34,6 +36,6 @@ class HangmanLogicTest {
         logic.guessLetter("l".toUpperCase());
         logic.guessLetter("a".toUpperCase());
         assertTrue(logic.isWon());
-
+        System.out.println("Se ha ganado");
     }
 }

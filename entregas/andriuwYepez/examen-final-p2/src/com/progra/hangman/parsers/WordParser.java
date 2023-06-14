@@ -21,7 +21,7 @@ public class WordParser implements Parser {
         this.regex = regex;
     }
 
-    public Word parse(String tokens) {
+    public Word parse(String tokens) throws InvalidWordException {
         /*
          * Tokens es una cadena que contiene la información de una palabra.
          * Valida que la cadena contenga 3 elementos separados por el caracter regex caso contrario lanza una excepción InvalidWordException
