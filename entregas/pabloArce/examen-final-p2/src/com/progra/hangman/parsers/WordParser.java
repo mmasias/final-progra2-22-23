@@ -45,13 +45,13 @@ public class WordParser implements Parser {
             int id = this.idValidator(words[0]);
             String word = words[1];
             String type = words[2];
-            if(type.equals("L")){
+            if(type.equals("LARGA")){
                 finalWord = new LargeWord(id, word);
             }
-            else if(type.equals("M")){
+            else if(type.equals("MEDIANA")){
                 finalWord = new MediumWord(id, word);
             }
-            else if(type.equals("S")){
+            else if(type.equals("CORTA")){
                 finalWord = new ShortWord(id, word);
             }
             else {throw new InvalidWordException("Invalid word");}

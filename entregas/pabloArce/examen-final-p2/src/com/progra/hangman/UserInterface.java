@@ -1,15 +1,21 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class UserInterface {
-    List<Word> words;
-    int currentWordIndex;
-    boolean gameOver;
+    private List<Word> words;
+    private int currentWordIndex;
+    private boolean gameOver;
 
-    HangmanLogic logic;
+    private HangmanLogic logic;
 
     public UserInterface() {
         this.words = new ArrayList<>();
@@ -36,6 +42,32 @@ public class UserInterface {
         Usar el método WordParser.parse para parsear las palabras
 
         */
+        WordParser wordParser = new WordParser();
+        String path = filename;
+        BufferedReader input = null;
+        try {
+            input = new BufferedReader(new FileReader(path));
+            try {
+                String line;
+                while ((line = input.readLine()) != null) {
+                    this.words.add(wordParser.parse(line));
+                }
+            } catch (IOException e) {
+                System.err.println("Error reading file");
+            } catch (InvalidWordException e) {
+                System.err.println("Invalid word");
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    System.err.println("Error closing file");
+                }
+            }
+        }
 
     }
 
@@ -52,6 +84,10 @@ public class UserInterface {
          Inicializar el juego con una palabra aleatoria
 
          * */
+        loadData(filename);
+        this.currentWordIndex = randomIndex();
+        this.logic = new HangmanLogic(this.words.get(this.currentWordIndex));
+        this.gameOver = false;
     }
 
     public void play() {
