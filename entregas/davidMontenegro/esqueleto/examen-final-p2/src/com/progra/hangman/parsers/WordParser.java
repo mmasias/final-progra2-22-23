@@ -1,7 +1,7 @@
 package com.progra.hangman.parsers;
 
 import com.progra.hangman.Exceptions.*;
-import com.progra.hangman.base.Word;
+import com.progra.hangman.base.*;
 public class WordParser implements Parser {
 
 
@@ -18,7 +18,28 @@ public class WordParser implements Parser {
     }
 
     public Word parse(String tokens) throws InvalidWordException {
-
+        String[] words = tokens.split(regex);
+        if (words.length != ELEMENT_COUNT) {
+            throw new InvalidWordException("La cadena de texto no contiene los elementos necesarios");
+        }
+        int id = 0;
+        try {
+            id = idValidator(words[0]);
+        } catch (InvalidIdException e) {
+            throw new RuntimeException(e);
+        }
+        String word = words[1];
+        String type = words[2];
+        switch (type) {
+            case "Large":
+                return new LargeWord(id, word);
+            case "MEDIUM":
+                return new MediumWord(id, word);
+            case "SHORT":
+                return new ShortWord(id, word);
+            default:
+                throw new InvalidWordException("El tipo de palabra no es válido");
+        }
         /*
         * Tokens es una cadena que contiene la información de una palabra.
         * Se encarga de validar que la cadena contenga 3 elementos separados por el caracter regex caso contrario lanza una excepción InvalidWordException
