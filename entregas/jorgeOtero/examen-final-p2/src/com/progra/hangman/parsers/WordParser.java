@@ -24,32 +24,31 @@ public class WordParser implements Parser {
     public Word parse(String tokens) throws InvalidWordException {
 
         String[] words = tokens.split(this.regex);
-        for(int i = 0; i < words.length; i++) {
-            System.out.println(words[i]);
-        }
+
         sizeValidator(words);
-        if(words[2] == "CORTA") {
-            try {
-                return new ShortWord(this.idValidator(words[0]), words[1]);
-            } catch (InvalidIdException e) {
-                System.err.println(e.getMessage());
-            }
-        } else if (words[2] == "MEDIANA"){
-            try {
-                return new MediumWord(this.idValidator(words[0]), words[1]);
-            } catch (InvalidIdException e) {
-                System.err.println(e.getMessage());
-            }
-        } else if (words[2]== "LARGA"){
-            try {
-                return new LargeWord(this.idValidator(words[0]), words[1]);
-            } catch (InvalidIdException e) {
-                System.err.println(e.getMessage());
-            }
-        } else {
-            throw new InvalidWordException("Tipo de palabra no válida");
+        switch (words[2]) {
+            case "CORTA":
+                try {
+                    return new ShortWord(this.idValidator(words[0]), words[1]);
+                } catch (InvalidIdException e) {
+                    System.err.println(e.getMessage());
+                }
+            case "MEDIANA":
+                try {
+                    return new MediumWord(this.idValidator(words[0]), words[1]);
+                } catch (InvalidIdException e) {
+                    System.err.println(e.getMessage());
+                }
+            case "LARGA":
+                try {
+                    return new LargeWord(this.idValidator(words[0]), words[1]);
+                } catch (InvalidIdException e) {
+                    System.err.println(e.getMessage());
+                }
+            default:
+                throw new InvalidWordException("Tipo de palabra no válida");
         }
-        return null;
+
     }
 
     /*

@@ -31,15 +31,15 @@ public class UserInterface {
 
     private void loadData(String filename) throws FileNotFoundException, InvalidWordException {
         ReadFile readFile = new ReadFile();
+        List<String> words;
+        WordParser wordParser = new WordParser();
         try {
-            List<String> words = readFile.loadSource(filename);
+            for(String word : readFile.loadSource(filename)) {
+                this.words.add(wordParser.parse(word));
+            }
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        WordParser wordParser = new WordParser(",");
-
-
-
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
         i: leer el archivo filename y guardar las palabras en la lista words
@@ -53,6 +53,13 @@ public class UserInterface {
     }
 
     public void start(String filename) {
+        try {
+            this.loadData(filename);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidWordException e) {
+            System.out.println(e.getMessage());
+        }
         /*
          Cargar las palabras desde el archivo
 
