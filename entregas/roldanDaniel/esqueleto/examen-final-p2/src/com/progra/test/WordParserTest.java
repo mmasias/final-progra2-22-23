@@ -2,7 +2,7 @@ package com.progra.test;
 
 import com.progra.hangman.base.MediumWord;
 import com.progra.hangman.base.Word;
-import com.progra.hangman.exceptions.InvalidWordException;
+
 import com.progra.hangman.parsers.WordParser;
 import exceptions.InvalidWordException;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Esta clase supera los test
 class WordParserTest {
 
     @Test
