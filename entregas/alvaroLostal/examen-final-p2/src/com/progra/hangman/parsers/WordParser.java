@@ -1,6 +1,8 @@
 package com.progra.hangman.parsers;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.hangman.exceptions.InvalidWordException;
 
 public class WordParser implements Parser {
 
@@ -30,6 +32,7 @@ public class WordParser implements Parser {
          * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
          * */
 
+        return null;
     }
 
     /*

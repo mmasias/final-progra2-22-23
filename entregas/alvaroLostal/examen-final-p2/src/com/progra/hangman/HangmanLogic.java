@@ -2,13 +2,14 @@ package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
 
-public class HangmanLogic {
+public class HangmanLogic extends Word {
 
     private Word word;
     private String guessedLetters;
     private int numberOfFaults;
 
     public HangmanLogic(Word word) {
+        super(word.getId(), word.getWord());
         this.word = word;
         this.word.toUpperCase();
         this.guessedLetters = "";
@@ -36,11 +37,6 @@ public class HangmanLogic {
         a menos que se haya adivinado antes de llamar a este método.
          */
 
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == letter.charAt(0)) {
-                guessedLetters += letter;
-            }
-        }
     }
 
     public boolean isGameOver() {
@@ -49,7 +45,7 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
-        return false;
+        return numberOfFaults > word.getMaxTries();
     }
 
     public boolean isWon() {
@@ -57,6 +53,8 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+
+        return guessedLetters.length() == word.getLength();
     }
 
     public String getHangman() {
