@@ -35,6 +35,17 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+
+        if (!this.word.getWord().contains(letter)) {
+            this.numberOfFaults++;
+        }
+
+        if (this.guessedLetters.contains(letter)) {
+            return;
+        }
+
+        this.guessedLetters += letter;
+
     }
 
     public boolean isGameOver() {
@@ -43,7 +54,14 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
-        return false;
+
+        if (this.numberOfFaults > this.word.getMaxTries()) {
+            return true;
+        } else if (this.numberOfFaults > this.guessedLetters.length()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean isWon() {
@@ -51,7 +69,17 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
-        return true;
+
+        String iterableWord = this.word.getWord();
+
+        for (int i = 0; i < iterableWord.length(); i++) {
+            String selectedWord = String.valueOf(iterableWord.charAt(i));
+            if (this.guessedLetters.contains(selectedWord)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public String getHangman() {
@@ -83,7 +111,7 @@ public class HangmanLogic {
                 break;
         }
 
-        if (numberOfFaults >= word.getMaxTries()){
+        if (numberOfFaults >= word.getMaxTries()) {
             hangman = "\n_________" + "\n|                   |" + "\n|                  O" + "\n|               ---|---" + "\n|                  /" + "\n|                /" + "\n|_______________________\n";
         }
 
@@ -100,12 +128,23 @@ public class HangmanLogic {
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
 
+        String hiddenWord = "";
 
+        String iterableWord = this.word.getWord();
 
+        // using simple for-loop
+        for (int i = 0; i < iterableWord.length(); i++) {
+            String selectedWord = String.valueOf(iterableWord.charAt(i));
+            if (this.guessedLetters.contains(selectedWord)) {
+                hiddenWord += selectedWord;
+            } else {
+                hiddenWord += "_";
+            }
+        }
 
         // return the hidden word at the end
 
-        return "";
+        return hiddenWord;
     }
 
 }
