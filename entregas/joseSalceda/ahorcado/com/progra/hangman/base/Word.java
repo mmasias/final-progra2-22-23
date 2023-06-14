@@ -1,4 +1,4 @@
-package com.progra.hangman.base;
+package entregas.joseSalceda.ahorcado.com.progra.hangman.base;
 
 public abstract class Word {
     private int id;

@@ -1,6 +1,6 @@
-package com.progra.test;
+package entregas.joseSalceda.ahorcado.com.progra.test;
 
-import com.progra.hangman.UserInterface;
+import entregas.joseSalceda.ahorcado.com.progra.hangman.UserInterface;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ class UserInterfaceTest {
 
     @Test
     @DisplayName("start() should return amount of words loaded")
-    void start() {
+    void start(){
         UserInterface ui = new UserInterface();
         // word-list.txt contains 15 words
         ui.start("data/word-list.txt");

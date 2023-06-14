@@ -1,9 +1,8 @@
-package com.progra.utils;
+package entregas.joseSalceda.ahorcado.com.progra.util;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ReadFile {
     public List<String> loadSource(String fileName) throws FileNotFoundException {
