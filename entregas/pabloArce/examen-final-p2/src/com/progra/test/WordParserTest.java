@@ -14,7 +14,7 @@ class WordParserTest {
     @Test
     @DisplayName("nameParsedTest() should create a Word object with word 'abdomen'")
     void nameParsedTest() {
-        String tokens = "9,abdomen,MEDIANA";
+        String tokens = "9,abdomen,M";
         WordParser wordParser = new WordParser(",");
         Word word = null;
         try {
@@ -28,7 +28,7 @@ class WordParserTest {
     @Test
     @DisplayName("instanceParsedTest() should create an instance of MediumWord")
     void instanceParsedTest() {
-        String tokens = "9,abdomen,MEDIANA";
+        String tokens = "9,abdomen,M";
         WordParser wordParser = new WordParser(",");
         Word word = null;
         try {
@@ -49,7 +49,7 @@ class WordParserTest {
             Word word = wordParser.parse(tokens);
         });
 
-        assertEquals("Word not valid, Valores de la palabra faltantes", thrown.getMessage());
+        assertEquals("Missing words values", thrown.getMessage());
     }
 
 }

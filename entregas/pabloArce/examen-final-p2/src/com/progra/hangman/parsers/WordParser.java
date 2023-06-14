@@ -37,7 +37,11 @@ public class WordParser implements Parser {
         * */
         try{
             String[] words = tokens.split(this.regex);
-            this.sizeValidator(words);
+            try {
+                this.sizeValidator(words);
+            } catch (InvalidWordException e) {
+                throw new InvalidWordException(e.getMessage());
+            }
             int id = this.idValidator(words[0]);
             String word = words[1];
             String type = words[2];
