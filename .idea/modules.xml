@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/examen-final-p1/examen-final-p1.iml" filepath="$PROJECT_DIR$/examen-final-p1/examen-final-p1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/examen-final-p2.iml" filepath="$PROJECT_DIR$/.idea/examen-final-p2.iml" />
     </modules>
   </component>

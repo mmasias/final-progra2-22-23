@@ -1,6 +1,6 @@
 
 
-public class Main {
+public class MainInterfaces {
     public static void main(String[] args) {
         /*
          * Acá debe de probar la implementación del ejercicio dos, tal
