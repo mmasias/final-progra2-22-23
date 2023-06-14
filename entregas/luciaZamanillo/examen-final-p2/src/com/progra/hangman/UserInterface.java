@@ -1,8 +1,13 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
+import com.progra.utils.ReadFile;
 
+import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserInterface {
     List<Word> words;
@@ -25,33 +30,36 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException{
 
-        /*
-        Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
-        i: leer el archivo filename y guardar las palabras en la lista words
-        i: si el archivo no existe, lanzar una excepción FileNotFoundException
-        i: si el archivo no contiene palabras, lanzar una excepción InvalidWordException
+        ReadFile fileReader = new ReadFile();
+        List<String> loadedWord = fileReader.loadSource(filename);
+        WordParser parser = new WordParser();
+        if(loadedWord == null) {
+            throw new FileNotFoundException();
+        }
+        if(loadedWord.isEmpty()) {
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
+        }
 
-        Usar el método WordParser.parse para parsear las palabras
+        this.words = loadedWord.stream()
+                .map(j -> {
+                    try {
+                        return parser.parse(j);
+                    } catch (InvalidWordException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .collect(Collectors.toList());
 
-        */
 
     }
 
-    public void start(String filename) {
-        /*
-         Cargar las palabras desde el archivo
+    public void start(String filename) throws InvalidWordException, FileNotFoundException {
 
-         EJEMPLO DE UNA LINEA DEL ARCHIVO:
-             1,Electroencefalografista,LARGA
-
-             Con la siguiente estructura:
-             codigo,palabra,tipo
-
-         Inicializar el juego con una palabra aleatoria
-
-         * */
+        loadData(filename);
+        Word word = this.words.get( (int) (Math.random() * (words.size()-1)) );
+        this.logic = new HangmanLogic(word);
     }
 
     public void play() {
