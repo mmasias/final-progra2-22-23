@@ -119,12 +119,15 @@ public class HangmanLogic {
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
 
-
-
-
-        // return the hidden word at the end
-
-        return "";
+        String hiddenWord = "";
+        for (int i = 0; i < word.getWord().length(); i++) {
+            if (guessedLetters.contains(word.getWord().charAt(i) + "")) {
+                hiddenWord += word.getWord().charAt(i);
+            } else {
+                hiddenWord += "_";
+            }
+        }
+        return hiddenWord;
     }
 
 }
