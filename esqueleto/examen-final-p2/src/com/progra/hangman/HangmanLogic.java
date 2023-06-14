@@ -30,7 +30,7 @@ public class HangmanLogic {
          si la letra ya fue adivinada, no pasa nada
         i: si la letra ha sido adivinada, agrega letra a la variable guessedLetters.
         si la palabra no contiene la letra adivinada, aumenta el número de fallas
-        i: aumentar el número de fallas solo si la letra no se ha adivinado y la letra no está en Word
+        i: aumentar el número de fallas solo si la letra no se ha adivinado y la letra no está en Main.Word
 
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.

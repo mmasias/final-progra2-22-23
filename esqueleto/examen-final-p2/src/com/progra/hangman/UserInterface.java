@@ -31,9 +31,9 @@ public class UserInterface {
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
         i: leer el archivo filename y guardar las palabras en la lista words
         i: si el archivo no existe, lanzar una excepción FileNotFoundException
-        i: si el archivo no contiene palabras, lanzar una excepción InvalidWordException
+        i: si el archivo no contiene palabras, lanzar una excepción Main.HangmanLogic.InvalidWordException
 
-        Usar el método WordParser.parse para parsear las palabras
+        Usar el método Main.WordParser.parse para parsear las palabras
 
         */
 

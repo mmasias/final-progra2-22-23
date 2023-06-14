@@ -45,18 +45,18 @@ Los siguientes test los encontrará en el paquete `com.progra.hangman.test`
 archivo **data/word-list.txt**.
 
 #### WordParserTest
-*[ ]  `nameParsedTest`: Ingresando una cadena de texto crear una instancia de Word y debe
+*[ ]  `nameParsedTest`: Ingresando una cadena de texto crear una instancia de Main.Word y debe
   retornar con el nombre parseado.
 *[ ]  `instanceParsedTest`: Dependiedo de que tipo de palabra es se crea una instancia de la clase
   específica (_**Larga**_ -> _LargeWord_, _**Mediana**_ -> _MediumWord_, _**Corta**_ -> _ShortWord_), este test debe
   parsear una cadena de texto y crear la instancia adecuada basándonos en el tipo de palabra.
 *[ ]  `sizeValidatorTest`: Debe validar que la cadena de texto al parsearlo deba tener la cantidad de
-  elementos necesarios para crear una instancia de `Word`.
+  elementos necesarios para crear una instancia de `Main.Word`.
 
 #### WordTest
-*[ ]  `shortWordTest`: Al momento de crear una instancia de `ShortWord` al validar el nivel debe
+*[ ]  `shortWordTest`: Al momento de crear una instancia de `Main.ShortWord` al validar el nivel debe
   retornar **S**.
-*[ ]  `mediumWordTest`: Al momento de crear una instancia de `MediumWord` al validar el nivel
+*[ ]  `mediumWordTest`: Al momento de crear una instancia de `Main.MediumWord` al validar el nivel
   debe retornar **M**.
 
 ## 📚 Ejercicio 2: Interfaces
@@ -134,7 +134,7 @@ entrada de un programa de computadora y la conversión de la misma en una forma 
 para el ordenador. [Leer más...](https://www.alegsa.com.ar/Dic/parseo.php#gsc.tab=0)
 
 Un ejemplo de una libreria muy usado en java es [Apache POI](https://poi.apache.org/text-extraction.html) que 
-nos permite parsear archivos de Excel, Word, PDF, etc.
+nos permite parsear archivos de Excel, Main.Word, PDF, etc.
 
 ## Uso de paquetes en Java
 Un paquete es un contenedor de clases, interfaces y subpaquetes. Los paquetes se utilizan para organizar 

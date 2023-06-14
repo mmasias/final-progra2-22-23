@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WordParserTest {
 
     @Test
-    @DisplayName("nameParsedTest() should create a Word object with word 'abdomen'")
+    @DisplayName("nameParsedTest() should create a Main.Word object with word 'abdomen'")
     void nameParsedTest() {
         String tokens = "9,abdomen,MEDIANA";
         WordParser wordParser = new WordParser(",");
@@ -26,7 +26,7 @@ class WordParserTest {
     }
 
     @Test
-    @DisplayName("instanceParsedTest() should create an instance of MediumWord")
+    @DisplayName("instanceParsedTest() should create an instance of Main.MediumWord")
     void instanceParsedTest() {
         String tokens = "9,abdomen,MEDIANA";
         WordParser wordParser = new WordParser(",");
@@ -49,7 +49,7 @@ class WordParserTest {
             Word word = wordParser.parse(tokens);
         });
 
-        assertEquals("Word not valid, Valores de la palabra faltantes", thrown.getMessage());
+        assertEquals("Main.Word not valid, Valores de la palabra faltantes", thrown.getMessage());
     }
 
 }
