@@ -2,6 +2,7 @@ package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -28,16 +29,6 @@ public class UserInterface {
 
     private void loadData(String filename){
 
-        try {
-            if (filename.equals(null)){
-                throw new FileNotFoundException();
-            } else {
-
-
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
 
         /*
@@ -49,6 +40,24 @@ public class UserInterface {
         Usar el método WordParser.parse para parsear las palabras
 
         */
+
+        //File file =
+
+
+        try {
+            if (filename.equals(null)){
+                throw new FileNotFoundException();
+            } else {
+
+
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Añadir palabras a words con WordParser.Parse(String tokens)
+
+
 
     }
 
@@ -65,6 +74,9 @@ public class UserInterface {
          Inicializar el juego con una palabra aleatoria
 
          * */
+
+        loadData("word-list.txt");
+
     }
 
     public void play() {

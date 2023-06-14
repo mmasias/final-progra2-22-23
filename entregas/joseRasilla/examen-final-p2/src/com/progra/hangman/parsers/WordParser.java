@@ -36,31 +36,34 @@ public class WordParser implements Parser {
          * */
 
 
-        String[] tokensArray = tokens.split(regex,ELEMENT_COUNT);
+        String[] tokensArray = tokens.split(regex, ELEMENT_COUNT);
         sizeValidator(tokensArray);
 
         String code = tokensArray[0];
         int id = 0;
         try {
             id = idValidator(code);
-        }
-        catch (InvalidIdException e){
+            System.out.println(id);
 
+
+        } catch (Exception e) {
+            throw new InvalidWordException(e.getMessage());
         }
         String word = tokensArray[1];
+        System.out.println(word);
         String type = tokensArray[2];
-
+        System.out.println(type);
 
 
         switch (type) {
-            case "Short":
+            case "CORTA":
                 return new ShortWord(id, word);
-            case "Medium":
+            case "MEDIANA":
                 return new MediumWord(id, word);
-            case "Large":
+            case "LARGA":
                 return new LargeWord(id, word);
         }
-        return null;
+        throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
     }
 
     /*
@@ -82,8 +85,12 @@ public class WordParser implements Parser {
      * Valida que la cadena contenga 3 elementos separados por el caracter regex caso contrario lanza una excepción InvalidWordException
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
-        if (words.length != this.ELEMENT_COUNT) {
-            throw new InvalidWordException("Valores de la palabra faltantes");
+        try {
+            if (words.length != this.ELEMENT_COUNT) {
+                throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
+            }
+        } catch (Exception e) {
+            throw new InvalidWordException(e.getMessage());
         }
     }
 
