@@ -22,7 +22,7 @@ public class WordParser implements Parser {
         this.regex = regex;
     }
 
-    public Word parse(String tokens) throws InvalidWordException {
+    public Word parse(String tokens) throws InvalidWordException{
 
         /*
         * Tokens es una cadena que contiene la información de una palabra.
@@ -35,7 +35,7 @@ public class WordParser implements Parser {
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
         
-        if(!validCommas(tokens)) throw new InvalidWordException("INVALIDO");
+        if(!validCommas(tokens)) throw new InvalidWordException("INVALID");
         String[] allTokens = tokens.split(",");
         int id = Integer.parseInt(allTokens[0]);
         String word = allTokens[1];
@@ -44,7 +44,7 @@ public class WordParser implements Parser {
         if(type.equals("LARGA")) return new LargeWord(id, word);
         else if(type.equals("MEDIANA")) return new MediumWord(id, word);
         else if(type.equals("CORTA")) return new ShortWord(id, word);
-        throw new InvalidWordException("INVALIDO, INTENTELO DE NUEVO");
+        throw new InvalidWordException("INVALID, TRY AGAIN");
 
 
     }
@@ -80,7 +80,7 @@ public class WordParser implements Parser {
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
         if(words.length != this.ELEMENT_COUNT){
-            throw new InvalidWordException("Valores de la palabra faltantes");
+            throw new InvalidWordException("INPUT ERROR, TRY AGAIN");
         }
     }
 

@@ -8,6 +8,7 @@ import com.progra.utils.ReadFile;
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserInterface {
     List<Word> words;
@@ -30,7 +31,7 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename) throws FileNotFoundException, InvalidWordException{
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException {
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
@@ -45,7 +46,7 @@ public class UserInterface {
         List<String> csv = fileReader.loadSource(filename);
         WordParser parser = new WordParser();
         if(csv == null) throw new FileNotFoundException();
-        if(csv.isEmpty()) throw new InvalidWordException("INVALIDO");
+        if(csv.isEmpty()) throw new InvalidWordException("INVALID");
 
         this.words = csv.stream()
                 .map(j -> {
@@ -76,7 +77,6 @@ public class UserInterface {
         loadData(filename);
         Word word = this.words.get(randomIndex());
         this.logic = new HangmanLogic(word);
-
     }
 
     public void play() {
@@ -90,16 +90,18 @@ public class UserInterface {
         printMenu();
 
         while (!this.gameOver && !this.logic.isWon()) {
-
-
-            System.out.println("\nPalabra a adivinar con " + this.logic.hiddenWord().length() + " letras:");
+            System.out.println("+----------------------------------------------------+");
+            System.out.println("\nWord to guess has " + this.logic.hiddenWord().length() + " letters:");
             System.out.println( this.logic.hiddenWord());
+            System.out.println("+----------------------------------------------------+");
 
-            System.out.println("Ingrese una letra: ");
+            System.out.println("Enter a letter: ");
             String letter = reader.nextLine();
+            System.out.println("+----------------------------------------------------+");
 
-            if (letter.equals("salir")) {
-                System.out.println("Gracias por jugar!");
+
+            if (letter.equals("exit")) {
+                System.out.println("Thanks for playing!");
                 break;
             }else if (letter.length()==1) {
                 this.logic.guessLetter(letter.toUpperCase());
@@ -112,17 +114,21 @@ public class UserInterface {
 
         }
         if (this.logic.isWon()) {
-            System.out.println("Ganaste!");
+            System.out.println("You're the best!");
         } else {
-            System.out.println("Perdiste!");
+            System.out.println("Good luck next time!");
         }
     }
 
 
     public void printMenu() {
-        System.out.println("* Instrucciones *");
-        System.out.println("salir   -  Salir del juego");
-        System.out.println("Para jugar, ingrese una letra y presione enter. ");
+        System.out.println("+----------------------------------------------------+");
+        System.out.println("* Instructions *");
+        System.out.println("exit   -  Exit the game");
+        System.out.println("To be able to play, you need to enter a letter ");
+        System.out.println("+----------------------------------------------------+");
+
+
     }
 
 }
