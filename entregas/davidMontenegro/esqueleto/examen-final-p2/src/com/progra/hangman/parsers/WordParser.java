@@ -1,8 +1,7 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.Exceptions.*;
 import com.progra.hangman.base.Word;
-import com.progra.hangman.exceptions.InvalidWordException;
-
 public class WordParser implements Parser {
 
 

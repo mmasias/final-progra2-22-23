@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/entregas/davidMontenegro/esqueleto/examen-final-p2/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/entregas/davidMontenegro/esqueleto/examen-final-p2/src/com/progra/interfaces" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/esqueleto/examen-final-p2/src" isTestSource="false" />
     </content>
