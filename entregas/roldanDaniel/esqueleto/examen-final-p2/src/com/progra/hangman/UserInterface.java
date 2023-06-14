@@ -1,7 +1,11 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.parsers.WordParser;
+import com.progra.utils.ReadFile;
+import exceptions.InvalidWordException;
 
+import java.io.*;
 import java.util.*;
 
 public class UserInterface {
@@ -25,7 +29,7 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) {
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
@@ -37,22 +41,44 @@ public class UserInterface {
 
         */
 
+        filename ="entregas/roldanDaniel/esqueleto/examen-final-p2/data/word-list.txt";
+        File file = new File(filename);
+        List<String> data = new ArrayList<String>();
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader(file));
+            while (in.ready()) {
+                String line = in.readLine();
+                if (line.length() > 0) {
+                    data.add(line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }
+        System.out.println(data.size() + " elements loaded.");
+
     }
 
-    public void start(String filename) {
-        /*
-         Cargar las palabras desde el archivo
 
-         EJEMPLO DE UNA LINEA DEL ARCHIVO:
-             1,Electroencefalografista,LARGA
 
-             Con la siguiente estructura:
-             codigo,palabra,tipo
 
-         Inicializar el juego con una palabra aleatoria
+    public void start(String filename) throws FileNotFoundException, InvalidWordException {
+        loadData(filename);
+        Word word = this.words.get( (int) (Math.random() * (words.size()-1)) );
+        this.logic = new HangmanLogic(word);
 
-         * */
+
     }
+
 
     public void play() {
         Scanner reader = new Scanner(System.in);
