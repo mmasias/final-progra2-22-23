@@ -26,7 +26,6 @@ public class UserInterface {
     }
 
     private void loadData(String filename){
-        try { file file
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
         i: leer el archivo filename y guardar las palabras en la lista words
