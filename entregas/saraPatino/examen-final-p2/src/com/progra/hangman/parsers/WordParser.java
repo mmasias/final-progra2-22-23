@@ -1,5 +1,6 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.base.MediumWord;
 import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidIdException;
 
@@ -19,7 +20,11 @@ public class WordParser implements Parser {
     }
 
     public Word parse(String tokens) throws InvalidWordException {
+        MediumWord wordMedium;
+        String[] text = tokens.split(regex, ELEMENT_COUNT);
+        System.out.println(text[0] + text[1] + text[2]);
 
+        wordMedium = new MediumWord(1, "text");
         /*
         * Tokens es una cadena que contiene la información de una palabra.
         * Se encarga de validar que la cadena contenga 3 elementos separados por el caracter regex caso contrario lanza una excepción InvalidWordException
@@ -30,7 +35,7 @@ public class WordParser implements Parser {
         * tipo: es el tipo de palabra que es: LARGA, MEDIA o CORTA
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
-
+        return wordMedium;
     }
 
     /*
