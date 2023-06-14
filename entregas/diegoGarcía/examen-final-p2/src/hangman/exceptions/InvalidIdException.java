@@ -1,6 +1,6 @@
 package hangman.exceptions;
 
-class InvalidIdException extends NumberFormatException {
+public class InvalidIdException extends NumberFormatException {
     public InvalidIdException(String message) {
         super(message);
     }
