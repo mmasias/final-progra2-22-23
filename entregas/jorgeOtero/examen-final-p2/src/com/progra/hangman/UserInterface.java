@@ -1,7 +1,10 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.utils.ReadFile;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class UserInterface {
@@ -25,7 +28,13 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException {
+        ReadFile readFile = new ReadFile();
+        try {
+            List<String> words = readFile.loadSource(filename);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename

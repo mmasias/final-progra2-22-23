@@ -30,7 +30,7 @@ public class WordParser implements Parser {
             } catch (InvalidIdException e) {
                 System.err.println(e.getMessage());
             }
-        } else if (words[2]== "MEDIA"){
+        } else if (words[2]== "MEDIANA"){
             try {
                 return new MediumWord(this.idValidator(words[0]), words[1]);
             } catch (InvalidIdException e) {
@@ -54,11 +54,7 @@ public class WordParser implements Parser {
     private int idValidator(String id) throws InvalidIdException {
         int idInt;
 
-        try{
-            idInt = Integer.parseInt(id);
-        }catch(Exception e){
-            throw new InvalidIdException(e.getMessage());
-        }
+        idInt = Integer.parseInt(id);
 
         return idInt;
     }
