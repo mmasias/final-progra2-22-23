@@ -25,7 +25,9 @@ public class HangmanLogic {
 
 
     public void guessLetter(String letter) {
-
+        if (!guessedLetters().contains(letter)) {
+            guessedLetters  += letter;
+        }
         /* Programa aquí la funcionalidad para adivinar
          si la letra ya fue adivinada, no pasa nada
         i: si la letra ha sido adivinada, agrega letra a la variable guessedLetters.
@@ -38,12 +40,16 @@ public class HangmanLogic {
     }
 
     public boolean isGameOver() {
+        boolean gameover = false;
 
+        if (numberOfFaults() > this.word.getMaxTries()) {
+            gameover = true;
+        }
         /* programa aquí la funcionalidad para verificar si el juego ha terminado
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
-        return false;
+        return gameover;
     }
 
     public boolean isWon() {
@@ -51,6 +57,12 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+
+        boolean isWon = false;
+
+        if (this.guessedLetters().equals(word)) {
+            isWon = true;
+        }
         return false;
     }
 
