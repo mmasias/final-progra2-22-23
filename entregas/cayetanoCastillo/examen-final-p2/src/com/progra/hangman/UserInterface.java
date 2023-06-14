@@ -1,8 +1,13 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
 
-import java.util.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class UserInterface {
     List<Word> words;
@@ -26,6 +31,20 @@ public class UserInterface {
     }
 
     private void loadData(String filename){
+
+        try {
+
+            loadData(filename);
+
+            this.currentWordIndex = randomIndex();
+            this.logic = new HangmanLogic(this.words.get(this.currentWordIndex));
+            this.gameOver = false;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe");
+        } catch (InvalidWordException e) {
+            System.out.println("El archivo no contiene palabras");
+        }
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename

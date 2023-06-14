@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordParserTest {
+class WordParserTest  {
 
     @Test
     @DisplayName("nameParsedTest() should create a Word object with word 'abdomen'")
@@ -21,13 +21,13 @@ class WordParserTest {
 
     @Test
     @DisplayName("instanceParsedTest() should create an instance of MediumWord")
-    void instanceParsedTest() {
+    void instanceParsedTest()  {
         String tokens = "9,abdomen,MEDIANA";
         WordParser wordParser = new WordParser(",");
         Word word = null;
         try {
             word = wordParser.parse(tokens);
-        } catch (InvalidWordException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         assertInstanceOf(MediumWord.class, word);

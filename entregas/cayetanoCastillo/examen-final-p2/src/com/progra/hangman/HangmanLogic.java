@@ -38,9 +38,10 @@ public class HangmanLogic {
     }
 
     public boolean isGameOver() {
-        if (numberOfFaults >= word.getMaxTries()) {
+        if (numberOfFaults > word.getMaxTries()) {
             return true;
         }
+
 
         /* programa aquí la funcionalidad para verificar si el juego ha terminado
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
@@ -50,7 +51,7 @@ public class HangmanLogic {
     }
 
     public boolean isWon() {
-        if (word.getWord().length() == guessedLetters.length()) {
+        if (word.length() == guessedLetters.length()) {
             return true;
         }
 

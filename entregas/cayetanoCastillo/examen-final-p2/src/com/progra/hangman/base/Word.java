@@ -1,6 +1,6 @@
 package com.progra.hangman.base;
 
-public abstract class Word {
+public class Word {
     private int id;
     private String word;
     protected String level;
@@ -35,5 +35,9 @@ public abstract class Word {
 
     public void toUpperCase() {
         word = word.toUpperCase();
+    }
+
+    public int length() {
+        return word.length();
     }
 }
