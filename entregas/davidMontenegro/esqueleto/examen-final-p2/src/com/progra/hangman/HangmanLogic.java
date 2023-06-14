@@ -35,6 +35,7 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+
     }
 
     public boolean isGameOver() {

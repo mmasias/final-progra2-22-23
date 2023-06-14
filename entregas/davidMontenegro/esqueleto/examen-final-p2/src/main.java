@@ -1,6 +1,6 @@
 import com.progra.hangman.UserInterface;
 
-public class Main {
+public class main {
     public static void main(String[] args) {
         /*
          * Este código lo he puesto en el Main para que puedas probar

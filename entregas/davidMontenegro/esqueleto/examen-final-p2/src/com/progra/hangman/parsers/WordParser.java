@@ -1,6 +1,7 @@
 package com.progra.hangman.parsers;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
 
 public class WordParser implements Parser {
 
@@ -37,7 +38,6 @@ public class WordParser implements Parser {
     */
     private int idValidator(String id) throws InvalidIdException {
         int idInt;
-
         try{
             idInt = Integer.parseInt(id);
         }catch(Exception e){
