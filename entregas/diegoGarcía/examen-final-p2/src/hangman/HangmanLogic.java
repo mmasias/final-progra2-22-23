@@ -2,7 +2,7 @@ package hangman;
 
 import hangman.base.Word;
 
-class HangmanLogic {
+public class HangmanLogic {
     private Word word;
     private String guessedLetters;
     private int numberOfFaults;
