@@ -57,6 +57,14 @@ public class UserInterface {
 
     public void start(String filename) {
 
+        try {
+            loadData(filename);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvalidWordException e) {
+            e.printStackTrace();
+        }
+
         /*
          * Cargar las palabras desde el archivo
          * 
