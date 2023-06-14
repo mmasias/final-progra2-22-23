@@ -61,10 +61,23 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
-        if(this.word.getWord().equals(hiddenWord())) return true;
-        else return false;
-    }
+        int counter = 0;
 
+        char[]letters = this.hiddenWord().toCharArray();
+        for(char el: letters) {
+            if(String.valueOf(el).equals("_")) {
+                counter++;
+            }
+        }
+
+        if(counter == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
     public String getHangman() {
         String hangman = "";
         switch (numberOfFaults) {
@@ -110,18 +123,21 @@ public class HangmanLogic {
         // si la letra en cuestión, de this.word, no está entre las letras adivinadas, reemplácela con _ en la palabra oculta
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
-        char[] hiddenWord = new char[word.getWord().length()];
+        String hiddenWord="";
 
-        for(int i = 0; i < word.getWord().length(); i++){
-            for(int k = 0; k < guessedLetters.length(); k++){
-                if( word.getWord().charAt(i) == guessedLetters.charAt(k)){
-                    hiddenWord[i] = guessedLetters.charAt(k);
-                }
+        char[] letters = this.word.getWord().toCharArray();
+        for(char el: letters) {
+            if(this.guessedLetters.contains(String.valueOf(el))) {
+                hiddenWord += el;
+            } else {
+                hiddenWord+= "_";
             }
         }
+
+
         // return the hidden word at the end
 
-        return String.valueOf(hiddenWord);
+        return hiddenWord;
     }
 
 }

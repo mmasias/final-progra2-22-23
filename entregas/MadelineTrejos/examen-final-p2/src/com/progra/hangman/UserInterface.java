@@ -1,7 +1,12 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exception.InvalidIdException;
+import com.progra.hangman.exception.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
+import com.progra.utils.ReadFile;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class UserInterface {
@@ -36,8 +41,26 @@ public class UserInterface {
         Usar el método WordParser.parse para parsear las palabras
 
         */
+        ReadFile readFile = new ReadFile();
+        WordParser parser = new WordParser();
+        List<String> listWords;
+
+        try {
+            listWords = readFile.loadSource("data/word-list.txt");
+
+            for (String line : listWords) {
+                Word word = parser.parse(line);
+                this.words.add(word);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (InvalidIdException e) {
+            System.err.println(e.getMessage());
+        }
 
     }
+
+
 
     public void start(String filename) {
         /*
@@ -52,7 +75,13 @@ public class UserInterface {
          Inicializar el juego con una palabra aleatoria
 
          * */
+        System.out.println("Loading Data...");
+        this.loadData(filename);
+        this.currentWordIndex = this.randomIndex();
+        this.logic = new HangmanLogic(this.words.get(currentWordIndex));
     }
+
+
 
     public void play() {
         Scanner reader = new Scanner(System.in);
