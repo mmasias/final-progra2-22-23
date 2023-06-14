@@ -1,0 +1,86 @@
+@startuml
+class com.progra.hangman.base.MediumWord {
++  MediumWord(int,String)
+}
+class com.progra.hangman.exceptions.InvalidWordException {
++  InvalidWordException(String)
+}
+class com.progra.hangman.UserInterface {
+~ List<Word> words
+~ int currentWordIndex
+~ boolean gameOver
+~ HangmanLogic logic
++  UserInterface()
+- int randomIndex()
+- void loadData(String)
++ void start(String)
++ void play()
++ void printMenu()
+}
+class com.progra.hangman.HangmanLogic {
+- Word word
+- String guessedLetters
+- int numberOfFaults
++  HangmanLogic(Word)
++ int numberOfFaults()
++ String guessedLetters()
++ void guessLetter(String)
++ boolean isGameOver()
++ boolean isWon()
++ String getHangman()
++ String hiddenWord()
+}
+interface com.progra.hangman.parsers.Parser {
++ Word parse(String)
+}
+class com.progra.hangman.exceptions.InvalidIdException {
++  InvalidIdException(String)
+}
+abstract class com.progra.hangman.base.Word {
+- int id
+- String word
+# String level
+# int maxTries
++  Word(int,String)
++ int getId()
++ String getWord()
++ int getLength()
++ int getMaxTries()
++ String getLevel()
++ void toUpperCase()
+}
+class com.progra.hangman.base.LargeWord {
++  LargeWord(int,String)
+}
+class com.progra.hangman.parsers.WordParser {
+~ String regex
+~ int ELEMENT_COUNT
++  WordParser()
++  WordParser(String)
++ Word parse(String)
+- int idValidator(String)
+- void sizeValidator(String[])
+}
+class com.progra.hangman.base.ShortWord {
++  ShortWord(int,String)
+}
+
+
+com.progra.hangman.base.Word <|-- com.progra.hangman.base.MediumWord
+java.lang.Exception <|-- com.progra.hangman.exceptions.InvalidWordException
+java.lang.NumberFormatException <|-- com.progra.hangman.exceptions.InvalidIdException
+com.progra.hangman.base.Word <|-- com.progra.hangman.base.LargeWord
+com.progra.hangman.parsers.Parser <|.. com.progra.hangman.parsers.WordParser
+com.progra.hangman.base.Word <|-- com.progra.hangman.base.ShortWord
+
+com.progra.hangman.UserInterface "1" o-- "*" com.progra.hangman.base.Word : Contiene
+com.progra.hangman.HangmanLogic "1" --> "1" com.progra.hangman.base.Word : Posee
+
+com.progra.hangman.parsers.WordParser -- com.progra.hangman.exceptions.InvalidWordException : usa
+com.progra.hangman.parsers.WordParser -- com.progra.hangman.exceptions.InvalidIdException : usa
+com.progra.hangman.parsers.WordParser -- com.progra.hangman.UserInterface : usa
+
+
+note top of java.lang : Paquete de la libreria de Java, no hace falta desarrollarlo
+
+@enduml
