@@ -63,6 +63,7 @@ public class UserInterface {
          * */
 
         loadData("data/word-list.txt");
+        logic = new HangmanLogic(words.get(0));
     }
 
     public void play() {
