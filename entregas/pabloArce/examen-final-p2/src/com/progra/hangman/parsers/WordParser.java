@@ -23,6 +23,7 @@ public class WordParser implements Parser {
     }
 
     public Word parse(String tokens) throws InvalidWordException {
+        Word finalWord = null;
 
         /*
         * Tokens es una cadena que contiene la información de una palabra.
@@ -41,17 +42,17 @@ public class WordParser implements Parser {
             String word = words[1];
             String type = words[2];
             if(type.equals("L")){
-                return new LargeWord(id, word);
+                finalWord = new LargeWord(id, word);
             }
             else if(type.equals("M")){
-                return new MediumWord(id, word);
+                finalWord = new MediumWord(id, word);
             }
             else if(type.equals("S")){
-                return new ShortWord(id, word);
+                finalWord = new ShortWord(id, word);
             }
             else {throw new InvalidWordException("Invalid word");}
         } catch(InvalidWordException e){}
-        return null;
+        return finalWord;
     }
 
     /*
