@@ -30,7 +30,14 @@ public abstract class Word {
     }
 
     public String getLevel() {
-        return level;
+        int length = getLength();
+        if (length <= 5) {
+            return "S";
+        } else if (length <= 9) {
+            return "M";
+        } else {
+            return "L";
+        }
     }
 }
 

@@ -1,5 +1,6 @@
-package hangman;
+package hangman.test;
 
+import hangman.UserInterface;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

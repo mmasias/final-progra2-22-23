@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class UserInterface {
-    List<Word> words;
+    public List<Word> words;
     private int currentWordIndex;
     private boolean gameOver;
     private HangmanLogic logic;

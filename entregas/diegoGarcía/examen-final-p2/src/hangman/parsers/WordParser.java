@@ -5,7 +5,7 @@ import hangman.base.Word;
 import hangman.exceptions.InvalidIdException;
 import hangman.exceptions.InvalidWordException;
 
-class WordParser implements Parser {
+public class WordParser implements Parser {
     private String regex;
     private static final int ELEMENT_COUNT = 2;
 
@@ -46,7 +46,7 @@ class WordParser implements Parser {
         }
     }
 
-    boolean sizeValidator(String word) throws InvalidWordException {
+    public boolean sizeValidator(String word) throws InvalidWordException {
         if (word.isEmpty()) {
             throw new InvalidWordException("La palabra no puede estar vacía.");
         }

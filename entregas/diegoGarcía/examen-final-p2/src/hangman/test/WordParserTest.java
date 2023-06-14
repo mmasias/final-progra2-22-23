@@ -1,8 +1,9 @@
-package hangman.parsers;
+package hangman.test;
 
 import hangman.base.MediumWord;
 import hangman.base.Word;
 import hangman.exceptions.InvalidWordException;
+import hangman.parsers.WordParser;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
