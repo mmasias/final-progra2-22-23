@@ -6,7 +6,7 @@ public abstract class Word {
     protected String level;
     protected int maxTries;
 
-    public Word(int id, String word) {
+    public Word() {
         this.id = id;
         this.word = word;
         this.level = "ND";

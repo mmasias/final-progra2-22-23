@@ -27,24 +27,6 @@ public class UserInterface {
 
     private void loadData(String filename){
 
-        loadData = new ArrayList<>();
-        try {
-            File file = new File(filename);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    Word word = WordParser.parse(parts[1], parts[2]);
-                    words.add(word);
-                }
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Archivo no encontrado: " + filename);
-        } catch (InvalidWordException e) {
-            System.out.println("Archivo no contiene palabras validas: " + filename);
-        }
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
         i: leer el archivo filename y guardar las palabras en la lista words

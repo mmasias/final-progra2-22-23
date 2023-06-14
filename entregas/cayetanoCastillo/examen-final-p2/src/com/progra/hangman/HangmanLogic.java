@@ -38,7 +38,7 @@ public class HangmanLogic {
     }
 
     public boolean isGameOver() {
-        if(numberOfFaults >= word.getMaxTries()){
+        if (numberOfFaults >= word.getMaxTries()) {
             return true;
         }
 
@@ -50,14 +50,16 @@ public class HangmanLogic {
     }
 
     public boolean isWon() {
-        if(word.getGuessedLetters().length() == word.getWord().length()){
+        if (word.getWord().length() == guessedLetters.length()) {
             return true;
         }
+
 
         /* programa aquí la funcionalidad para comprobar si se gana el juego
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+        return false;
     }
 
     public String getHangman() {

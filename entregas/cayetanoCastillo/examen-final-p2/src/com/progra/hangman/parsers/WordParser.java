@@ -17,7 +17,9 @@ public class WordParser implements Parser {
         this.regex = regex;
     }
 
-    public Word parse(String tokens) throws InvalidWordException {
+    public Word parse(String tokens) throws InvalidWordException, InvalidIdException {
+
+
 
         /*
         * Tokens es una cadena que contiene la información de una palabra.
@@ -29,7 +31,7 @@ public class WordParser implements Parser {
         * tipo: es el tipo de palabra que es: LARGA, MEDIA o CORTA
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
-
+        return null;
     }
 
     /*
@@ -46,6 +48,7 @@ public class WordParser implements Parser {
 
         return idInt;
     }
+
 
     /*
     * Valida que la cadena contenga 3 elementos separados por el caracter regex caso contrario lanza una excepción InvalidWordException
