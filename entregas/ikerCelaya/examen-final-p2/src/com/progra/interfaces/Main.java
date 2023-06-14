@@ -12,7 +12,8 @@ public class Main {
 
         Calc calc = new Calc();
         calc.divisorSum(6);
-
-
+        calc.divisorSum(1200);
+        calc.describeDivisors(24);
+        calc.describeDivisors(1200);
     }
 }
