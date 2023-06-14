@@ -14,5 +14,6 @@ public class Main {
         UserInterface ui = new UserInterface();
         ui.start("entregas/cesarGarcia/ejercicio1/data/word-list.txt");
         ui.play();
+        System.out.println("Gracias por jugar!");
     }
 }
