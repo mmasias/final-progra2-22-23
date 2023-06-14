@@ -35,6 +35,13 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+        if (guessedLetters.contains(letter)) {
+            return;
+        }
+        guessedLetters += letter;
+        if (!word.getWord().contains(letter)) {
+            numberOfFaults++;
+        }
     }
 
     public boolean isGameOver() {
@@ -43,6 +50,9 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
+        if (numberOfFaults > word.getMaxTries()) {
+            return true;
+        }
         return false;
     }
 
@@ -51,7 +61,16 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
-        return true;
+        int cont = 0;
+        for (int i = 0; i < guessedLetters.length(); i++) {
+            if (guessedLetters.contains(word.getWord().charAt(i) + "")) {
+                cont++;
+            }
+        }
+        if (cont == word.getWord().length()) {
+            return true;
+        }
+        return false;
     }
 
     public String getHangman() {
