@@ -6,22 +6,26 @@ public class Calc implements AdvancedArithmetic{
 
     }
 
+    /*
     public int describeDivisors(int n){
-        int count = 0;
-        for(int i = 1; i <= n; i++){
-            if(n % i == 0){
-                count++;
+
+        if (n > 999){
+            throw new IllegalArgumentException("InputMaxValueException - Max value allowed is 999");
+
+        }
+        for (int i = n; i <= n; i--){
+            if (n % i == 0){
+                System.out.println(i);
             }
         }
-        return count;
     }
-
+*/
     @Override
-    public int divisorSum(int n){
+    public int divisorSum(int n) throws MayorQueNovecientosNoventaYNueve {
 
 
         if(n > 999){
-            throw new IllegalArgumentException("InputMaxValueException - Max value allowed is 999");
+            throw new MayorQueNovecientosNoventaYNueve ("InputMaxValueException - Max value allowed is 999");
         }
         int sum = 0;
         for(int i = 1; i <= n; i++){

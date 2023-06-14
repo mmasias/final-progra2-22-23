@@ -1,7 +1,7 @@
 package com.progra.interfaces;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MayorQueNovecientosNoventaYNueve {
         /*
          * Acá debe de probar la implementación del ejercicio dos, tal
          * como se detalla en el enunciado.
