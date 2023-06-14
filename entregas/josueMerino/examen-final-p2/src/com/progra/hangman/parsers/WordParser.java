@@ -43,12 +43,20 @@ public class WordParser implements Parser {
         String word = characters[1];
         String type = characters[2];
 
-        return switch (type) {
-            case "CORTA" -> new ShortWord(code, word);
-            case "MEDIA" -> new MediumWord(code, word);
-            case "LARGA" -> new LargeWord(code, word);
-            default -> null;
-        };
+        if(type.equals("CORTA") ){
+            return new ShortWord(code, word);
+        }
+        else if (type.equals("MEDIANA"))
+        {
+            return new MediumWord(code, word);
+        }
+        else if (type.equals("LARGA"))
+        {
+            return new LargeWord(code, word);
+        }
+        else{
+            return null;
+        }
 
     }
 
@@ -72,7 +80,7 @@ public class WordParser implements Parser {
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
         if(words.length != this.ELEMENT_COUNT){
-            throw new InvalidWordException("Valores de la palabra faltantes");
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
         }
     }
 
