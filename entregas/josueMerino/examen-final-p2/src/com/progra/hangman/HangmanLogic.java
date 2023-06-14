@@ -25,7 +25,6 @@ public class HangmanLogic {
 
 
     public void guessLetter(String letter) {
-
         /* Programa aquí la funcionalidad para adivinar
          si la letra ya fue adivinada, no pasa nada
         i: si la letra ha sido adivinada, agrega letra a la variable guessedLetters.
@@ -35,6 +34,20 @@ public class HangmanLogic {
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
+        boolean guessed = false;
+
+        for (String l: word.getWord().split("")) {
+            if (l.equals(letter)){
+                guessedLetters = letter + guessedLetters;
+                guessed = true;
+            }
+        }
+        if (!guessed){
+            numberOfFaults++;
+        }
+
+
+
     }
 
     public boolean isGameOver() {
@@ -43,6 +56,11 @@ public class HangmanLogic {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
+
+        if (numberOfFaults > 8 || numberOfFaults > word.getMaxTries()){
+            return true;
+        }
+
         return false;
     }
 
@@ -51,6 +69,7 @@ public class HangmanLogic {
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
+        return hiddenWord().replaceAll("[^a-zA-Z]", "").length() == word.getLength();
     }
 
     public String getHangman() {
@@ -99,12 +118,21 @@ public class HangmanLogic {
         //i: repase cada letra en this.word y use guessedLetters.contains(letter) para ver si se ha adivinado la letra actual.
         //i: si es así, agréguelo a hiddenWord. si no, agregue "_" a hiddenWord. luego pasar a la siguiente letra
 
+        String hiddenWord = "";
 
-
+        for(String letter : word.getWord().split("")) {
+            if(guessedLetters.contains(letter))
+            {
+                hiddenWord = letter + hiddenWord;
+            }
+            else {
+                hiddenWord = "_" + hiddenWord;
+            }
+        }
 
         // return the hidden word at the end
 
-        return "";
+        return hiddenWord;
     }
 
 }
