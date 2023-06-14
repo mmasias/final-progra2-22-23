@@ -63,10 +63,12 @@ public class HangmanLogic {
     }
 
     public boolean isWon() {
-        if(this.guessedLetters == this.word.getWord()){
+        if (guessedLetters.equals(word.getWord())) {
+            // Si se adivina la palabra completa, se gana el juego
             return true;
+        }else {
+            return false;
         }
-        return false;
         /* programa aquí la funcionalidad para comprobar si se gana el juego
          si se adivina la palabra, se gana el juego
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
