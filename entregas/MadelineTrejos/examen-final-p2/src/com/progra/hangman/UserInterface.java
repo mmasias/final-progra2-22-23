@@ -5,7 +5,6 @@ import com.progra.hangman.exception.InvalidIdException;
 import com.progra.hangman.exception.InvalidWordException;
 import com.progra.hangman.parsers.WordParser;
 import com.progra.utils.ReadFile;
-
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -54,7 +53,7 @@ public class UserInterface {
             }
         } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
-        } catch (InvalidIdException e) {
+        } catch (InvalidWordException e) {
             System.err.println(e.getMessage());
         }
 
