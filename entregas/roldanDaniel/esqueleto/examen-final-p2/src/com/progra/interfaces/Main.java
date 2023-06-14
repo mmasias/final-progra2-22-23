@@ -11,7 +11,7 @@ public class Main {
         System.out.println("==================================");
 
         Calc calc = new Calc();
-        System.out.println("Suma de los divisores: " + calc.divisorSum(0));
+        System.out.println("Suma de los divisores: " + calc.divisorSum(1002));
 
     }
 }
