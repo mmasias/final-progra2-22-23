@@ -1,6 +1,6 @@
-package hangman;
+package com.progra.hangman;
 
-import hangman.base.Word;
+import com.progra.hangman.base.Word;
 
 public class HangmanLogic {
 
@@ -26,6 +26,18 @@ public class HangmanLogic {
 
     public void guessLetter(String letter) {
 
+        if (guessedLetters.contains(letter)) {
+            // La letra ya ha sido adivinada, no se realiza ninguna acción
+            return;
+        }
+
+        if (word.getWord().contains(letter)) {
+            // La palabra contiene la letra adivinada, agregar la letra a la variable guessedLetters
+            guessedLetters += letter;
+            return;
+        }else {
+            numberOfFaults++;
+        }
 
         /* Programa aquí la funcionalidad para adivinar
          si la letra ya fue adivinada, no pasa nada

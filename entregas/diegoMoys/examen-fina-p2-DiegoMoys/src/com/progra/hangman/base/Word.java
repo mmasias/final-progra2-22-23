@@ -1,4 +1,4 @@
-package hangman.base;
+package com.progra.hangman.base;
 
 public abstract class Word {
     private int id;

@@ -1,8 +1,8 @@
 package test;
 
-import hangman.base.MediumWord;
-import hangman.base.ShortWord;
-import hangman.base.Word;
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.ShortWord;
+import com.progra.hangman.base.Word;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

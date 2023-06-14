@@ -1,6 +1,10 @@
-package hangman;
+package com.progra.hangman;
 
-import hangman.base.Word;
+import com.progra.hangman.HangmanLogic;
+import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -29,30 +33,34 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename) throws FileNotFoundException {
-
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException {
         words = new ArrayList<>();
-
-        filename = "C:\\Users\\diego\\OneDrive\\Escritorio\\final-progra2-22-23\\entregas\\diegoMoys\\examen-fina-p2-DiegoMoys\\src\\hangman\\words.txt";
-
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length == 3) {
-                    int codigo = Integer.parseInt(parts[0]);
+                    String codigoString = parts[0];
                     String palabra = parts[1];
                     String tipo = parts[2];
 
-                    Word newWord = new Word(codigo, palabra, tipo);
+                    WordParser WordParser = new WordParser();
+                    Word newWord = WordParser.parse(palabra);
                     words.add(newWord);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            throw e;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (InvalidIdException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Verificar si no se encontraron palabras en el archivo
+        if (words.isEmpty()) {
+            throw new InvalidWordException("El archivo no contiene palabras válidas.");
         }
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
@@ -70,7 +78,7 @@ public class UserInterface {
 
         try {
             loadData(filename);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidWordException e) {
             e.printStackTrace();
         }
 

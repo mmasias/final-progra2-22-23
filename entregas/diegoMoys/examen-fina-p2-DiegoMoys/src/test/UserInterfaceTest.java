@@ -1,6 +1,6 @@
 package test;
 
-import hangman.UserInterface;
+import com.progra.hangman.UserInterface;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,10 @@
 package test;
-import hangman.base.MediumWord;
-import hangman.base.Word;
-import hangman.exceptions.InvalidWordException;
-import hangman.parsers.WordParser;
+
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +20,7 @@ class WordParserTest {
         Word word = null;
         try {
             word = wordParser.parse(tokens);
-        } catch (InvalidWordException e) {
+        } catch (InvalidWordException | InvalidIdException e) {
             throw new RuntimeException(e);
         }
         assertEquals("abdomen", word.getWord());
@@ -32,7 +34,7 @@ class WordParserTest {
         Word word = null;
         try {
             word = wordParser.parse(tokens);
-        } catch (InvalidWordException e) {
+        } catch (InvalidWordException | InvalidIdException e) {
             throw new RuntimeException(e);
         }
         assertInstanceOf(MediumWord.class, word);
