@@ -4,9 +4,9 @@ import com.progra.hangman.base.Word;
 
 public class HangmanLogic {
 
-    private Word word;
-    private String guessedLetters;
-    private int numberOfFaults;
+    private final Word word;
+    private final String guessedLetters;
+    private final int numberOfFaults;
 
     public HangmanLogic(Word word) {
         this.word = word;

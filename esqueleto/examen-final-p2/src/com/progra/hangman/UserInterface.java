@@ -61,7 +61,7 @@ public class UserInterface {
         System.out.println("==========================================================");
         System.out.println("=                      AHORCADO                          =");
         System.out.println("==========================================================");
-        System.out.println("");
+        System.out.println();
         printMenu();
 
         while (!this.gameOver && !this.logic.isWon()) {

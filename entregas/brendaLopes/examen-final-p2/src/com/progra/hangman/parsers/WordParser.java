@@ -55,4 +55,8 @@ public class WordParser {
             throw new InvalidWordException("Valores de la palabra faltantes");
         }
     }
+
+    public Word parse(String tokens) {
+        return null;
+    }
 }

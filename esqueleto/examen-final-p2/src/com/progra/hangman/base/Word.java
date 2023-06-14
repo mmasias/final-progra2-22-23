@@ -1,7 +1,7 @@
 package com.progra.hangman.base;
 
 public abstract class Word {
-    private int id;
+    private final int id;
     private String word;
     protected String level;
     protected int maxTries;
