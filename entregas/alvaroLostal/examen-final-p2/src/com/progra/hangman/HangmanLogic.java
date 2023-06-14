@@ -32,12 +32,17 @@ public class HangmanLogic extends Word {
         i: si la letra ha sido adivinada, agrega letra a la variable guessedLetters.
         si la palabra no contiene la letra adivinada, aumenta el número de fallas
         i: aumentar el número de fallas solo si la letra no se ha adivinado y la letra no está en Word
-
         i: siempre agregue la letra ingresada guessedLetters (Para evitar contar como error si meten otra letra que no va),
         a menos que se haya adivinado antes de llamar a este método.
          */
 
+        if (guessedLetters.contains(letter)) {
+            guessedLetters += letter;
 
+        } else if (!getWord().contains(letter)) {
+            numberOfFaults++;
+        }
+        guessedLetters += letter;
     }
 
     public boolean isGameOver() {
@@ -58,7 +63,10 @@ public class HangmanLogic extends Word {
          i: si la cantidad de letras sin los guiones es igual a la cantidad de letras de la palabra, se gana el juego.
          */
 
-        return guessedLetters.length() == word.getLength();
+        if (getWord().length() == guessedLetters.length()) {
+            return true;
+        }
+        return false;
     }
 
     public String getHangman() {
