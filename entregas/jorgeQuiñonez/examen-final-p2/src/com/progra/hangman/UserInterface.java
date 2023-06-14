@@ -1,6 +1,7 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidWordException;
 import com.progra.hangman.parsers.WordParser;
 import com.progra.utils.ReadFile;
@@ -33,20 +34,11 @@ public class UserInterface {
 
         ReadFile readFile = new ReadFile();
 
-        for (String words : readFile.loadSource(filename)) {
-            String[] data = words.split(",");
-
-            int code;
-            code = Integer.parseInt(data[0]);
-
-            String lineWord;
-            lineWord = data[1];
-
-            String type;
-            type = data[2];
+        for (String fileWords : readFile.loadSource(filename)) {
 
             WordParser wordParser = new WordParser();
-            Word word = wordParser.parse(words);
+
+            this.words.add(wordParser.parse(fileWords));
 
         }
         /*

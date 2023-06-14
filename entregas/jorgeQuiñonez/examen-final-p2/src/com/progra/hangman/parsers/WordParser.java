@@ -1,5 +1,8 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.base.LargeWord;
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.ShortWord;
 import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidIdException;
 import com.progra.hangman.exceptions.InvalidWordException;
@@ -20,6 +23,24 @@ public class WordParser implements Parser {
     }
 
     public Word parse(String tokens) throws InvalidWordException {
+
+        String[] data = tokens.split(regex);
+
+        sizeValidator(data);
+
+        int id = idValidator(data[0]);
+        String word = data[1];
+        String type = data[2];
+
+        if (type.equals("LARGA")) {
+            return new LargeWord(id, word);
+        } else if (type.equals("MEDIANA")) {
+            return new MediumWord(id, word);
+        } else if (type.equals("CORTA")) {
+            return new ShortWord(id, word);
+        } else {
+            throw new InvalidWordException("Tipo de palabra inválida");
+        }
 
         /*
          * Tokens es una cadena que contiene la información de una palabra.
@@ -58,7 +79,7 @@ public class WordParser implements Parser {
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
         if (words.length != this.ELEMENT_COUNT) {
-            throw new InvalidWordException("Valores de la palabra faltantes");
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
         }
     }
 
