@@ -6,6 +6,10 @@ public class Calc implements AdvancedArithmetic {
 
     public String describeDivisor(int n) {
 
+        if (n < 1 || n > 1000) {
+            throw new IllegalArgumentException("Max value allowed is 999");
+        }
+
         String result = "";
 
         int[] divisors = new int[n];
