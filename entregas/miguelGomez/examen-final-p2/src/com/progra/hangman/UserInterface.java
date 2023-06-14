@@ -1,9 +1,9 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
 import com.progra.hangman.parsers.WordParser;
 import com.progra.utils.ReadFile;
-
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
