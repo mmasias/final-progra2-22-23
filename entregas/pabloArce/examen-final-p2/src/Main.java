@@ -1,3 +1,4 @@
+import com.progra.hangman.UserInterface;
 
 public class Main {
     public static void main(String[] args) {

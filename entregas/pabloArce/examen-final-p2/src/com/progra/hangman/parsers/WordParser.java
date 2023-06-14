@@ -31,7 +31,7 @@ public class WordParser implements Parser {
         * tipo: es el tipo de palabra que es: LARGA, MEDIA o CORTA
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
-
+        return null;
     }
 
     /*
