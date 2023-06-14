@@ -10,6 +10,9 @@ public class Main {
         System.out.println("===   Ejercicio 2: Interfaces  ===");
         System.out.println("==================================");
 
+        Calc calc = new Calc();
+        System.out.println("Divisores: " + calc.describeDivisor(6));
+        System.out.println("Suma de divisores: " + calc.divisorSum(6));
 
     }
 }
