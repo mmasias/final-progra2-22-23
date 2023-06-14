@@ -1,6 +1,11 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.LargeWord;
+import com.progra.hangman.base.ShortWord;
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.hangman.exceptions.InvalidWordException;
 
 public class WordParser implements Parser {
 
@@ -29,7 +34,30 @@ public class WordParser implements Parser {
         * tipo: es el tipo de palabra que es: LARGA, MEDIA o CORTA
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
+        
+        if(!validCommas(tokens)) throw new InvalidWordException("INVALIDO");
+        String[] allTokens = tokens.split(",");
+        int id = Integer.parseInt(allTokens[0]);
+        String word = allTokens[1];
+        String type = allTokens[2];
 
+        if(type.equals("LARGA")) return new LargeWord(id, word);
+        else if(type.equals("MEDIANA")) return new MediumWord(id, word);
+        else if(type.equals("CORTA")) return new ShortWord(id, word);
+        throw new InvalidWordException("INVALIDO, INTENTELO DE NUEVO");
+
+
+    }
+
+    private boolean validCommas(String tokens) {
+        int counter = 0;
+        for(int i = 0; i < tokens.length(); i++){
+            if(tokens.charAt(i) == ',') counter++;
+        }
+        if(counter == 2) 
+        	return true;
+        else 
+        	return false;
     }
 
     /*

@@ -1,7 +1,10 @@
+import java.io.FileNotFoundException;
+
 import com.progra.hangman.UserInterface;
+import com.progra.hangman.exceptions.InvalidWordException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, InvalidWordException {
         /*
          * Este código lo he puesto en el Main para que puedas probar
          * el juego de ahorcado.
