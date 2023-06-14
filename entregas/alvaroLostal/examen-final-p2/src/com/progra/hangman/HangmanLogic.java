@@ -37,6 +37,7 @@ public class HangmanLogic extends Word {
         a menos que se haya adivinado antes de llamar a este método.
          */
 
+
     }
 
     public boolean isGameOver() {
@@ -45,7 +46,10 @@ public class HangmanLogic extends Word {
            si el número de faltas es mayor que el número máximo de faltas, el juego termina
            i: si el número de fallas es mayor que el número máximo de intentos, el juego termina.
          */
-        return numberOfFaults > word.getMaxTries();
+        if (numberOfFaults > getMaxTries()) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isWon() {
