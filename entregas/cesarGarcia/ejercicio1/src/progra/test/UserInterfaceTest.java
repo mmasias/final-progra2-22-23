@@ -13,7 +13,7 @@ class UserInterfaceTest {
     void start() {
         UserInterface ui = new UserInterface();
         // word-list.txt contains 15 words
-        ui.start("data/word-list.txt");
+        ui.start("entregas/cesarGarcia/ejercicio1/data/word-list.txt");
         int expected = 15;
 
         int actual = ui.sizeListWord();
