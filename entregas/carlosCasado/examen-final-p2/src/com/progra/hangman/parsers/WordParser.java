@@ -1,5 +1,8 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.base.LargeWord;
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.ShortWord;
 import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidIdException;
 import com.progra.hangman.exceptions.InvalidWordException;
@@ -32,6 +35,23 @@ public class WordParser implements Parser {
         * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
         * */
 
+        String[] words = tokens.split(this.regex);
+        sizeValidator(words);
+
+        String code = words[0];
+        String word = words[1];
+        String type = words[2];
+
+        int id = idValidator(code);
+
+        return switch (type) {
+            case "LARGA" -> new LargeWord(id, word);
+            case "MEDIANA" -> new MediumWord(id, word);
+            case "MEDIA" -> new MediumWord(id, word);
+            case "CORTA" -> new ShortWord(id, word);
+            default -> throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
+        };
+
     }
 
     /*
@@ -54,7 +74,7 @@ public class WordParser implements Parser {
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
         if(words.length != this.ELEMENT_COUNT){
-            throw new InvalidWordException("Valores de la palabra faltantes");
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
         }
     }
 
