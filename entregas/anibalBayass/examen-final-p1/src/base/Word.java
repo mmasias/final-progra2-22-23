@@ -12,28 +12,31 @@ public abstract class Word {
         this.level = "ND";
         this.maxTries = 3;
     }
+    public int getMaxTries() {
+
+        return this.maxTries;
+    }
 
     public int getId() {
+
         return this.id;
     }
 
     public String getWord() {
         return this.word;
     }
-
-    public int getLength() {
-        return this.word.length();
-    }
-
-    public int getMaxTries() {
-        return this.maxTries;
+    public void toUpperCase() {
+        this.word = this.word.toUpperCase();
     }
 
     public String getLevel() {
         return this.level;
     }
 
-    public void toUpperCase() {
-        this.word = this.word.toUpperCase();
+    public int getLength() {
+        return this.word.length();
     }
+
+
+
 }
