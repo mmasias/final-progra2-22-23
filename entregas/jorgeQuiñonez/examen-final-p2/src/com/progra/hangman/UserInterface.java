@@ -56,6 +56,7 @@ public class UserInterface {
     }
 
     public void start(String filename) {
+
         /*
          * Cargar las palabras desde el archivo
          * 
