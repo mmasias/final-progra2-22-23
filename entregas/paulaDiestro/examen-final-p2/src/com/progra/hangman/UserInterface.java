@@ -1,6 +1,11 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.exceptions.FileNotFoundException;
+import com.progra.hangman.parsers.Parser;
+import com.progra.hangman.parsers.WordParser;
 
 import java.util.*;
 
@@ -25,10 +30,9 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
-
-
-        /*
+    private void loadData(String filename) {
+    }
+    /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
         i: leer el archivo filename y guardar las palabras en la lista words
         i: si el archivo no existe, lanzar una excepción FileNotFoundException
@@ -38,9 +42,12 @@ public class UserInterface {
 
         */
 
+    public void start(String filename) throws InvalidIdException {
+        this.loadData(filename);
+        this.currentWordIndex = this.randomIndex();
+        this.logic = new HangmanLogic(this.words.get(this.currentWordIndex));
+        this.gameOver = false;
     }
-
-    public void start(String filename) {
         /*
          Cargar las palabras desde el archivo
 
@@ -53,7 +60,6 @@ public class UserInterface {
          Inicializar el juego con una palabra aleatoria
 
          * */
-    }
 
     public void play() {
         Scanner reader = new Scanner(System.in);
@@ -69,7 +75,7 @@ public class UserInterface {
 
 
             System.out.println("\nPalabra a adivinar con " + this.logic.hiddenWord().length() + " letras:");
-            System.out.println( this.logic.hiddenWord());
+            System.out.println(this.logic.hiddenWord());
 
             System.out.println("Ingrese una letra: ");
             String letter = reader.nextLine();
@@ -77,7 +83,7 @@ public class UserInterface {
             if (letter.equals("salir")) {
                 System.out.println("Gracias por jugar!");
                 break;
-            }else if (letter.length()==1) {
+            } else if (letter.length() == 1) {
                 this.logic.guessLetter(letter.toUpperCase());
             } else if (letter.isEmpty()) {
                 printMenu();
@@ -101,4 +107,7 @@ public class UserInterface {
         System.out.println("Para jugar, ingrese una letra y presione enter. ");
     }
 
+    public int sizeListWords() {
+        return words.size();
+    }
 }

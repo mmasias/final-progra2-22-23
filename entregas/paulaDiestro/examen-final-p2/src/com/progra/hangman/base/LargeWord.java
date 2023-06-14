@@ -5,4 +5,5 @@ public class LargeWord extends Word{
         super(id, word);
     }
 
+
 }

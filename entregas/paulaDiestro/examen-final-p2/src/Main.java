@@ -1,7 +1,10 @@
 import com.progra.hangman.UserInterface;
+import com.progra.hangman.exceptions.InvalidIdException;
+import com.progra.interfaces.Calc;
+import com.progra.interfaces.AdvancedArithmetic;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidIdException {
         /*
          * Este código lo he puesto en el Main para que puedas probar
          * el juego de ahorcado.
@@ -13,4 +16,5 @@ public class Main {
         ui.start("data/word-list.txt");
         ui.play();
     }
+
 }
