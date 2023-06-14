@@ -75,14 +75,15 @@ public class UserInterface {
     }
 
     public void start(String filename) {
-
         try {
             loadData(filename);
         } catch (FileNotFoundException | InvalidWordException e) {
             e.printStackTrace();
         }
 
-        this.logic = new HangmanLogic(this.words.get(randomIndex()));
+        int randomIndex = randomIndex();
+        this.logic = new HangmanLogic(words.get(randomIndex));
+
         /*
          Cargar las palabras desde el archivo
 
