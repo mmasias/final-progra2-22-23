@@ -1,5 +1,8 @@
 package com.progra.hangman.parsers;
 
+import com.progra.hangman.base.LargeWord;
+import com.progra.hangman.base.MediumWord;
+import com.progra.hangman.base.ShortWord;
 import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidIdException;
 import com.progra.hangman.exceptions.InvalidWordException;
@@ -19,7 +22,7 @@ public class WordParser implements Parser {
         this.regex = regex;
     }
 
-    public Word parse(String tokens) throws InvalidWordException {
+    public Word parse(String tokens) throws InvalidWordException, InvalidIdException {
 
         /*
          * Tokens es una cadena que contiene la información de una palabra.
@@ -32,7 +35,15 @@ public class WordParser implements Parser {
          * Dependiendo del tipo crear la instancia de la clase Word correspondiente, que puede ser de la clase WordShort, WordMedium o WordLong
          * */
 
-        return null;
+        String[] words = tokens.split(this.regex);
+        sizeValidator(words);
+
+        return switch (words[2]) {
+            case "CORTA" -> new ShortWord(idValidator(words[0]), words[1]);
+            case "MEDIANA" -> new MediumWord(idValidator(words[0]), words[1]);
+            case "LARGA" -> new LargeWord(idValidator(words[0]), words[1]);
+            default -> throw new InvalidWordException("Tipo de palabra no válida");
+        };
     }
 
     /*
@@ -46,7 +57,6 @@ public class WordParser implements Parser {
         }catch(Exception e){
             throw new InvalidIdException(e.getMessage());
         }
-
         return idInt;
     }
 

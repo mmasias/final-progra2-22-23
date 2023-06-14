@@ -1,7 +1,10 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.utils.ReadFile;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class UserInterface {
@@ -25,7 +28,7 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) throws FileNotFoundException, InvalidWordException {
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
@@ -37,7 +40,14 @@ public class UserInterface {
 
         */
 
+        ReadFile readFile = new ReadFile();
 
+        if (filename == null) {
+            throw new FileNotFoundException("File not found");
+        }
+        if (filename.isEmpty()) {
+            throw new InvalidWordException("Invalid word");
+        }
 
     }
 
@@ -54,6 +64,17 @@ public class UserInterface {
          Inicializar el juego con una palabra aleatoria
 
          * */
+
+        try {
+            this.loadData(filename);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        } catch (InvalidWordException e) {
+            System.out.println("Invalid word");
+        }
+
+        this.logic = new HangmanLogic(this.words.get(this.randomIndex()));
+        this.gameOver = false;
     }
 
     public void play() {
