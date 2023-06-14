@@ -48,7 +48,6 @@ class WordParserTest {
             WordParser wordParser = new WordParser(",");
             Word word = wordParser.parse(tokens);
         });
-
         assertEquals("Word not valid, Valores de la palabra faltantes", thrown.getMessage());
     }
 

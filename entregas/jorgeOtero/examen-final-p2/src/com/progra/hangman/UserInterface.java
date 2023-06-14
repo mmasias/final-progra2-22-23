@@ -2,6 +2,7 @@ package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
 import com.progra.hangman.exceptions.InvalidWordException;
+import com.progra.hangman.parsers.WordParser;
 import com.progra.utils.ReadFile;
 
 import java.io.FileNotFoundException;
@@ -35,6 +36,9 @@ public class UserInterface {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        WordParser wordParser = new WordParser(",");
+
+
 
         /*
         Programa aquí la funcionalidad para cargar las palabras desde el archivo filename

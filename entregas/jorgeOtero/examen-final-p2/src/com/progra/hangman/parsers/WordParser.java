@@ -24,13 +24,17 @@ public class WordParser implements Parser {
     public Word parse(String tokens) throws InvalidWordException {
 
         String[] words = tokens.split(this.regex);
+        for(int i = 0; i < words.length; i++) {
+            System.out.println(words[i]);
+        }
+        sizeValidator(words);
         if(words[2] == "CORTA") {
             try {
                 return new ShortWord(this.idValidator(words[0]), words[1]);
             } catch (InvalidIdException e) {
                 System.err.println(e.getMessage());
             }
-        } else if (words[2]== "MEDIANA"){
+        } else if (words[2] == "MEDIANA"){
             try {
                 return new MediumWord(this.idValidator(words[0]), words[1]);
             } catch (InvalidIdException e) {
@@ -64,7 +68,7 @@ public class WordParser implements Parser {
      */
     private void sizeValidator(String[] words) throws InvalidWordException {
         if(words.length != this.ELEMENT_COUNT){
-            throw new InvalidWordException("Valores de la palabra faltantes");
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
         }
     }
 
