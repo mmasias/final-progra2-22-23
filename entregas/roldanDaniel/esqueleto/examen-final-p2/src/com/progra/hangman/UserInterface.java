@@ -1,8 +1,13 @@
 package com.progra.hangman;
 
 import com.progra.hangman.base.Word;
+import com.progra.hangman.parsers.WordParser;
+import com.progra.utils.ReadFile;
+import exceptions.InvalidWordException;
 
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserInterface {
     List<Word> words;
@@ -25,34 +30,43 @@ public class UserInterface {
         return words.size();
     }
 
-    private void loadData(String filename){
+    private void loadData(String filename) throws FileNotFoundException {
 
-        /*
-        Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
-        i: leer el archivo filename y guardar las palabras en la lista words
-        i: si el archivo no existe, lanzar una excepción FileNotFoundException
-        i: si el archivo no contiene palabras, lanzar una excepción InvalidWordException
+        ReadFile fileReader = new ReadFile();
+        List<String> data = fileReader.loadSource(filename);
+        WordParser parser = new WordParser();
+        if(data == null) try {
+            throw new FileNotFoundException();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        if (data.isEmpty()) try {
+            throw new InvalidWordException("Word not valid, Valores de la palabra faltantes");
+        } catch (InvalidWordException e) {
+            throw new RuntimeException(e);
+        }
 
-        Usar el método WordParser.parse para parsear las palabras
+        words = data.stream()
+                .map(j -> {
+                    try {
+                        return parser.parse(j);
+                    } catch (InvalidWordException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .collect(Collectors.toList());
 
-        */
 
+        }
+
+    public void start(String filename) throws FileNotFoundException, InvalidWordException {
+
+      // Programa aquí la funcionalidad para cargar las palabras desde el archivo filename
+        loadData(filename);
+        Word word = this.words.get( (int) (Math.random() * (words.size()-1)) );
+        this.logic = new HangmanLogic(word);
     }
 
-    public void start(String filename) {
-        /*
-         Cargar las palabras desde el archivo
-
-         EJEMPLO DE UNA LINEA DEL ARCHIVO:
-             1,Electroencefalografista,LARGA
-
-             Con la siguiente estructura:
-             codigo,palabra,tipo
-
-         Inicializar el juego con una palabra aleatoria
-
-         * */
-    }
 
     public void play() {
         Scanner reader = new Scanner(System.in);

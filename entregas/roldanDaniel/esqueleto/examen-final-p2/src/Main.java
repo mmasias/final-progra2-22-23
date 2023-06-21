@@ -1,7 +1,10 @@
 import com.progra.hangman.UserInterface;
+import exceptions.InvalidWordException;
+
+import java.io.FileNotFoundException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidWordException, FileNotFoundException {
         /*
          * Este código lo he puesto en el Main para que puedas probar
          * el juego de ahorcado.
@@ -9,8 +12,9 @@ public class Main {
          * archivo docs/ejemplo-salida-consola.txt
          */
 
+
         UserInterface ui = new UserInterface();
-        ui.start("data/word-list.txt");
+        ui.start("entregas/roldanDaniel/esqueleto/examen-final-p2/data/word-list.txt");
         ui.play();
     }
 }
