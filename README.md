@@ -3,7 +3,7 @@
 Examen final de la asignatura **Programación II** del [Grado de Ingeniería Informática](https://www.uneatlantico.es/escuela-politecnica-superior/estudios-grado-oficial-en-ingenieria-informatica) la [Universidad Europea del Atlántico](https://www.uneatlantico.es).
 
 ## 📝 Instrucciones
-* Cada ejercicio debe ir en un paquete y respetar el esqueleto inicial del proyecto tal como lo indicado [acá](entregas/roldanDaniel/esqueleto/examen-final-p2).
+* Cada ejercicio debe ir en un paquete y respetar el esqueleto inicial del proyecto tal como lo indicado [acá](entregas/MadelineTrejos/examen-final-p2).
 * El presente examen debe desarrollarse con los conceptos de programación vistos en clase hasta la sesión anterior a este examen.
 * Se deben además respetar los conceptos de código limpio:
     * Indentación.
